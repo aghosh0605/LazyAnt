@@ -1,31 +1,31 @@
 @echo off
 :entry
-color 02
-echo ------------Rajya's tool------------
-set /p password= Enter password :
-if %password%==continue goto :update 
-if %password%==bash\developer\mode goto :dev_side
-goto :wrong password
+echo ------------LazyAntHome------------
+goto check_Permissions
 
-:wrong password
-color 04
-echo Wrong password
-set /p wrong password= Try again :
-if %wrong password%==continue goto :mm
-goto :wrong password
+:check_Permissions
+    echo Administrative permissions required. Detecting permissions...
+
+    net session >nul 2>&1
+    if %errorLevel% == 0 (
+        echo Success: Administrative permissions confirmed.
+        goto update
+    ) else (
+        echo Failure: Current permissions inadequate. Please start with RUN AS ADMINISTRATOR
+    )
+
+    pause >nul
 
 :update
-echo x=msgbox("visit: C:\Windows\System32\GodMode" ,0, "GodMode activated") >> msgbox.vbs
+echo x=msgbox("visit: C:\Windows\System32\GodMode" ,0, "GodMode d") >> msgbox.vbs
 goto :mm
 
 :mm
-color 02
+echo To Open a tool type /tool number
 echo Available Tools:
 echo ------------------------------------------------------------------------------------------
 echo  1) Wifi key content
-echo  2) Calculator
 echo  3) System Information
-echo  4) Devops
 echo  5) IP Address
 echo  6) Hostname
 echo  7) Running Tasks
@@ -45,74 +45,30 @@ echo 20) Disable Touchpad (new) [UNDER CONSTRUCTION]
 echo 21) God Mode (new)
 echo 22) DNS Lookup (new) [UNDER CONSTRUCTION]
 echo ------------------------------------------------------------------------------------------
-set /p activate= Rajya~
+set /p activate= LazyAnt~
 if %activate%==bash\developer\mode goto :dev_side
-if %activate%==activatewifikeycontent goto :wifi key content
-if %activate%==activateone goto :wifi key content
-if %activate%==activate/1 goto :wifi key content
-if %activate%==activatecalculator goto :calculator
-if %activate%==activatetwo goto :calculator
-if %activate%==activate/2 goto :calculator
-if %activate%==activatesysteminformation goto :system information
-if %activate%==activatethree goto :system information 
-if %activate%==activate/3 goto :system information
-if %activate%==activatedevops goto :devops
-if %activate%==activatefour goto :devops
-if %activate%==activate/4 goto :devops
-if %activate%==activateipaddress goto :ipaddress
-if %activate%==activatefive goto :ipaddress
-if %activate%==activate/5 goto :ipaddress
-if %activate%==activatehostname goto :hostname
-if %activate%==activatesix goto :hostname
-if %activate%==activate/6 goto :hostname
-if %activate%==activaterunningtasks goto :runningtasks
-if %activate%==activateseaven goto :runningtasks
-if %activate%==activate/7 goto :runningtasks
-if %activate%==activateportsandservices goto :portsandservices
-if %activate%==activateeight goto :portsandservices
-if %activate%==activate/8 goto :portsandservices
-if %activate%==activatetraceroute goto :traceroute
-if %activate%==activatenine goto :traceroute
-if %activate%==activate/9 goto :traceroute
-if %activate%==activatepowerconfiguration goto :powerconfiguration
-if %activate%==activateonezero goto :powerconfiguration
-if %activate%==activate/10 goto :powerconfiguration
-if %activate%==activatemacaddress goto :macaddress
-if %activate%==activateoneone goto :macaddress
-if %activate%==activate/11 goto :macaddress
-if %activate%==activateallfilesscanner goto :allfilesscanner
-if %activate%==activateonetwo goto :allfilesscanner
-if %activate%==activate/12 goto :allfilesscanner 
-if %activate%==activateallfilesscannerandrepair goto :allfilesscannerandrepair
-if %activate%==activateonethree goto :allfilesscannerandrepair
-if %activate%==activate/13 goto :allfilesscannerandrepair
-if %activate%==activatedrivescanner goto :drivescanner
-if %activate%==activateonefour goto :drivescanner
-if %activate%==activate/14 goto :drivescanner
-if %activate%==datatransmitbooster goto :datatransmitbooster
-if %activate%==activateonefive goto :datatransmitbooster
-if %activate%==activate/15 goto :datatransmitbooster
-if %activate%==activatematrixeffect goto :matrixeffect
-if %activate%==activateonesix goto :matrixeffect
-if %activate%==activate/16 goto :matrixeffect
-if %activate%==activatesystemdatabase goto :systemdatabase
-if %activate%==activateoneseaven goto :systemdatabase
-if %activate%==activate/17 goto :systemdatabase
-if %activate%==activatednsresolvercacherefresher goto :dnsresolvercacherefresher
-if %activate%==activateoneeight goto :dnsresolvercacherefresher
-if %activate%==activate/18 goto :dnsresolvercacherefresher
-if %activate%==activateping goto :ping
-if %activate%==activate/onenine goto :ping
-if %activate%==activate/19 goto :ping
-if %activate%==activatedisabletouchpad goto :disabletouchpad
-if %activate%==activate/twozero goto :disabletouchpad
-if %activate%==activate/20 goto :disabletouchpad
-if %activate%==activategodmode goto :godmode
-if %activate%==activate/twoone goto :godmode
-if %activate%==activate/21 goto :godmode
-if %activate%==activatednslookup goto :dnslookup
-if %activate%==activate/twotwo goto :dnslookup
-if %activate%==activate/22 goto :dnslookup
+if %activate%==/1 goto :wifi key content
+if %activate%==/2 goto :calculator
+if %activate%==/3 goto :system information
+if %activate%==/4 goto :devops
+if %activate%==/5 goto :ipaddress
+if %activate%==/6 goto :hostname
+if %activate%==/7 goto :runningtasks
+if %activate%==/8 goto :portsandservices
+if %activate%==/9 goto :traceroute
+if %activate%==/10 goto :powerconfiguration
+if %activate%==/11 goto :macaddress
+if %activate%==/12 goto :allfilesscanner 
+if %activate%==/13 goto :allfilesscannerandrepair
+if %activate%==/14 goto :drivescanner
+if %activate%==/15 goto :datatransmitbooster
+if %activate%==/16 goto :matrixeffect
+if %activate%==/17 goto :systemdatabase
+if %activate%==/18 goto :dnsresolvercacherefresher
+if %activate%==/19 goto :ping
+if %activate%==/20 goto :disabletouchpad
+if %activate%==/21 goto :godmode
+if %activate%==/22 goto :dnslookup
 goto :mm
 
 :dev_side
@@ -161,13 +117,6 @@ goto :mm
 
 ***********************************************************************************************
 
-:calculator
-calc
-pause
-goto :mm
-
-***********************************************************************************************
-
 :system information
 color 09
 echo ------------------------------------------------------------------------------------------
@@ -177,19 +126,6 @@ echo _____/  /  _____/ /__ /____ /  / /   __/__ /\/ /   /__//\   /  / / /-\ /__ 
 pause
 systeminfo
 pause
-goto :mm
-
-***********************************************************************************************
-
-:devops
-color 05
-echo ------------------------------------------------------------------------------------------
-echo Enter command : 
-set /p code= Rajya~
-pause
-echo ------------------------------------------------------------------------------------------
-%code%
-pause 
 goto :mm
 
 ***********************************************************************************************
