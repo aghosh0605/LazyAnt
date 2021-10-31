@@ -4,23 +4,24 @@ echo ------------LazyAntHome------------
 goto check_Permissions
 
 :check_Permissions
+color 04
     echo Administrative permissions required. Detecting permissions...
 
     net session >nul 2>&1
     if %errorLevel% == 0 (
         echo Success: Administrative permissions confirmed.
-        goto update
+        pause
+        goto mm
     ) else (
         echo Failure: Current permissions inadequate. Please start with RUN AS ADMINISTRATOR
     )
 
     pause >nul
 
-:update
-echo x=msgbox("visit: C:\Windows\System32\GodMode" ,0, "GodMode d") >> msgbox.vbs
-goto :mm
+
 
 :mm
+color 03
 echo To Open a tool type /tool number
 echo Available Tools:
 echo ------------------------------------------------------------------------------------------
@@ -46,7 +47,6 @@ echo 21) God Mode (new)
 echo 22) DNS Lookup (new) [UNDER CONSTRUCTION]
 echo ------------------------------------------------------------------------------------------
 set /p activate= LazyAnt~
-if %activate%==bash\developer\mode goto :dev_side
 if %activate%==/1 goto :wifi key content
 if %activate%==/2 goto :calculator
 if %activate%==/3 goto :system information
@@ -71,13 +71,8 @@ if %activate%==/21 goto :godmode
 if %activate%==/22 goto :dnslookup
 goto :mm
 
-:dev_side
-color 04
-set /p name= DEVELOPER MODE<<cin;
-pause
-
 :wifi key content
-color 03
+color 05
 echo ------------------------------------------------------------------------------------------
 echo             _    ____   _    
 echo l        l I_I  /    \ I_I         ____            ___  ____    ___          ____     ___
@@ -95,14 +90,14 @@ echo ---------------------------------------------------------------------------
 color 02
 echo ------------------------------------------------------------------------------------------
 echo Input wifi name or server ID:
-set /p name= Rajya~
+set /p name= LazyAnt~
 goto :b1
 
 :b1
 color 04
 echo ------------------------------------------------------------------------------------------
 echo Do you want to proceed with %name% ? [yes or no]
-set /p conf= Rajya~
+set /p conf= LazyAnt~
 if %conf%==yes goto :yes1
 if %conf%==no goto :mm
 goto :input name
@@ -161,7 +156,7 @@ goto :mm
 ***********************************************************************************************
 
 :portsandservices
-color 03
+color 16
 echo ------------------------------------------------------------------------------------------
 echo Displays protocol statistics and current TCP/IP network connections.                     ]
 echo                                                                                          ]
@@ -211,12 +206,12 @@ echo                                                                            
 echo y             Displays the TCP connection template for all connections.                  ]
 echo               Cannot be combined with the other options.                                 ]
 echo ------------------------------------------------------------------------------------------
-echo
 echo Which services do you want to access? 
-echo
+echo Type Service Name with hyphen like -a or -b only.
 echo [-a, -b, -e, -f, -n, -o, -p, -q, -r, -s, -t, -x, -y or interval]
-echo
-set /p service= Rajya~
+echo If any process needs Ctrl+c to end, type N in the confirmation to exit to main menu. Y will close whole program.
+pause
+set /p service= LazyAnt~
 netstat %service%
 echo ------------------------------------------------------------------------------------------
 echo DONE
@@ -237,7 +232,7 @@ goto :mm
 ***********************************************************************************************
 
 :powerconfiguration
-color 03
+color 06
 echo ------------------------------------------------------------------------------------------
 powercfg
 echo ------------------------------------------------------------------------------------------
@@ -286,9 +281,9 @@ goto :mm
 echo ------------------------------------------------------------------------------------------
 color 04
 echo Which DRIVE do you want to scan ?
-set /p drive= Rajya~
+set /p drive= LazyAnt~
 echo Do you want to proceed with " %drive% " DRIVE ? [yes or no]
-set /p conf= Rajya~
+set /p conf= LazyAnt~
 if %conf%==yes goto :scanthedrive
 if %conf%==no goto :drivescanner
 
@@ -356,7 +351,7 @@ goto :start
 ***********************************************************************************************
 
 :systemdatabase
-color 03
+color 02
 echo  ______       _____      ________      _____       ______        _____       ________  _______
 echo i      \     /     \        l         /     \     l      l      /     \     /         /
 echo i      l    /       \       l        /       \    l      /     /       \    l         l
@@ -383,7 +378,7 @@ goto :mm
 color 07
 echo ------------------------------------------------------------------------------------------
 echo Input name or ip address of server : 
-set /p name_or_ip_address= Rajya~
+set /p name_or_ip_address= LazyAnt~
 color 02
 echo ------------------------------------------------------------------------------------------
 ping %name_or_ip_address%
@@ -421,7 +416,7 @@ color 02
 echo Check live DNS lookup for recent IP addresses of any domain names
 pause 
 echo Enter Domain name:
-set /p name= Rajya~
+set /p name= LazyAnt~
 nslookup %name%
 pause
 goto :mm
